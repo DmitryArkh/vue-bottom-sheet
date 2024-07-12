@@ -10,8 +10,12 @@
       </transition>
       <div ref="bottomSheetContent" :class="sheetContentClasses">
         <header ref="bottomSheetHeader" class="bottom-sheet__header">
-          <div class="bottom-sheet__draggable-area" ref="bottomSheetDraggableArea">
-            <div class="bottom-sheet__draggable-thumb"></div>
+          <div v-if="!hideDragHandle"  ref="bottomSheetDraggableArea">
+            <slot name="drag-handle">
+              <div class="bottom-sheet__draggable-area">
+                <div class="bottom-sheet__draggable-thumb"></div>
+              </div>
+            </slot>
           </div>
           <slot name="header" />
         </header>
@@ -41,6 +45,7 @@ interface IProps {
   transitionDuration?: number
   overlayClickClose?: boolean
   canSwipe?: boolean
+  hideDragHandle: boolean
 }
 
 /**
@@ -62,7 +67,8 @@ const props = withDefaults(defineProps<IProps>(), {
   maxWidth: 640,
   transitionDuration: 0.5,
   overlayClickClose: true,
-  canSwipe: true
+  canSwipe: true,
+  hideDragHandle: false,
 })
 
 /**

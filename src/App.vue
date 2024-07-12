@@ -44,6 +44,17 @@
           >Enable swipe to close</label
           >
         </div>
+        <div class="form-check form-switch mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="canSwipe"
+            v-model="hideDragHandle"
+          />
+          <label class="form-check-label" for="canSwipe"
+          >Hide Drag Handle</label
+          >
+        </div>
       </div>
       <div class="col-md-4 col-12">
         <div class="mb-3">
@@ -84,6 +95,7 @@
       :can-swipe="canSwipe"
       :overlay-color="overlayColorSelect"
       ref="myBottomSheet"
+      :hide-drag-handle="hideDragHandle"
     >
       <div class="sheet-content">
         <p>
@@ -165,6 +177,7 @@ const clickToClose = ref(true)
 const overlayColorSelect = ref('#0000004D')
 const canSwipe = ref(true)
 const myBottomSheet = ref(null)
+const hideDragHandle = ref(false)
 
 const open = () => {
   myBottomSheet.value.open()
