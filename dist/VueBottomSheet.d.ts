@@ -31,6 +31,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         required: true;
         default: boolean;
     };
+    roundness: {
+        type: import("vue").PropType<string>;
+        required: true;
+        default: string;
+    };
 }, {
     open: () => void;
     close: () => Promise<void>;
@@ -67,6 +72,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         required: true;
         default: boolean;
     };
+    roundness: {
+        type: import("vue").PropType<string>;
+        required: true;
+        default: string;
+    };
 }>> & {
     onOpened?: ((...args: any[]) => any) | undefined;
     onClosed?: ((...args: any[]) => any) | undefined;
@@ -80,6 +90,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     overlayClickClose: boolean;
     canSwipe: boolean;
     hideDragHandle: boolean;
+    roundness: string;
 }, {}>, {
     "drag-handle"?(_: {}): any;
     header?(_: {}): any;

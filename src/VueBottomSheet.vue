@@ -46,6 +46,7 @@ interface IProps {
   overlayClickClose?: boolean
   canSwipe?: boolean
   hideDragHandle: boolean
+  roundness: string
 }
 
 /**
@@ -69,6 +70,7 @@ const props = withDefaults(defineProps<IProps>(), {
   overlayClickClose: true,
   canSwipe: true,
   hideDragHandle: false,
+  roundness: "16px",
 })
 
 /**
@@ -360,7 +362,7 @@ defineExpose({ open, close })
   &__content {
     display: flex;
     flex-direction: column;
-    border-radius: 16px 16px 0 0;
+    border-radius: v-bind(roundness) v-bind(roundness) 0 0;
     background: #ffffff;
     overflow-y: hidden;
     transform: translate3d(0, v-bind('translateValueString'), 0);
