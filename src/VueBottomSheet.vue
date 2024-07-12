@@ -8,7 +8,7 @@
           v-show="overlay && showSheet"
         />
       </transition>
-      <div ref="bottomSheetContent" :class="sheetContentClasses">
+      <div ref="bottomSheetContent" :class="sheetContentClasses" :style="`border-radius: ${roundness} ${roundness} 0 0`">
         <header ref="bottomSheetHeader" class="bottom-sheet__header">
           <div v-if="!hideDragHandle"  ref="bottomSheetDraggableArea">
             <slot name="drag-handle">
@@ -362,7 +362,6 @@ defineExpose({ open, close })
   &__content {
     display: flex;
     flex-direction: column;
-    border-radius: v-bind(roundness) v-bind(roundness) 0 0;
     background: #ffffff;
     overflow-y: hidden;
     transform: translate3d(0, v-bind('translateValueString'), 0);

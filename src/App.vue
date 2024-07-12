@@ -96,7 +96,7 @@
       :overlay-color="overlayColorSelect"
       ref="myBottomSheet"
       :hide-drag-handle="hideDragHandle"
-      roundness="16px"
+      roundness="50px"
     >
       <div class="sheet-content">
         <p>
