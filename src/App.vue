@@ -97,6 +97,7 @@
       ref="myBottomSheet"
       :hide-drag-handle="hideDragHandle"
       roundness="50px"
+      :hideDragHandle="true"
     >
       <div class="sheet-content">
         <p>

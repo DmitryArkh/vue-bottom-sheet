@@ -10,9 +10,9 @@
       </transition>
       <div ref="bottomSheetContent" :class="sheetContentClasses" :style="`border-radius: ${roundness} ${roundness} 0 0`">
         <header ref="bottomSheetHeader" class="bottom-sheet__header">
-          <div v-if="!hideDragHandle"  ref="bottomSheetDraggableArea">
-            <slot name="drag-handle">
-              <div class="bottom-sheet__draggable-area">
+          <div  ref="bottomSheetDraggableArea" class="bottom-sheet__draggable-area">
+            <slot name="drag-handle" v-if="!hideDragHandle" >
+              <div class="bottom-sheet__default-draggable-area">
                 <div class="bottom-sheet__draggable-thumb"></div>
               </div>
             </slot>
@@ -384,8 +384,12 @@ defineExpose({ open, close })
   &__draggable-area {
     width: 100%;
     margin: auto;
-    padding: 16px;
+    
     cursor: grab;
+  }
+
+  &__default-draggable-area {
+    padding: 16px;
   }
 
   &__draggable-thumb {
