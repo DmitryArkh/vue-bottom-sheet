@@ -120,7 +120,7 @@ const bottomSheetDraggableArea = ref<HTMLElement | null>(null)
  * @param element
  */
 const isFocused = (element: HTMLElement) => document.activeElement === element
-window.addEventListener('keyup', (event: KeyboardEvent) => {
+function handleKeyUp(event: KeyboardEvent) {
   const isSheetElementFocused =
     bottomSheet.value!.contains(event.target as HTMLElement) &&
     isFocused(event.target as HTMLElement)
@@ -128,7 +128,7 @@ window.addEventListener('keyup', (event: KeyboardEvent) => {
   if (event.key === 'Escape' && !isSheetElementFocused) {
     close()
   }
-})
+}
 
 /**
  * Return all classes for bottom sheet content
@@ -283,12 +283,14 @@ const open = () => {
   document.documentElement.style.overscrollBehavior = 'none'
   showSheet.value = true
   emit('opened')
+  window.addEventListener('keyup', handleKeyUp)
 }
 
 /**
  * Close bottom sheet method
  */
 const close = async () => {
+  window.removeEventListener('keyup', handleKeyUp)
   showSheet.value = false
   translateValue.value = 100
   setTimeout(() => {
