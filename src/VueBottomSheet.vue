@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div class="bottom-sheet" ref="bottomSheet" :aria-hidden="!showSheet" role="dialog">
+    <div class="bottom-sheet" ref="bottomSheet" :aria-hidden="!showSheet" role="dialog" :style="{zIndex}">
       <transition>
         <div
           @click="clickOnOverlayHandler"
@@ -45,8 +45,9 @@ interface IProps {
   transitionDuration?: number
   overlayClickClose?: boolean
   canSwipe?: boolean
-  hideDragHandle: boolean
-  roundness: string
+  hideDragHandle?: boolean
+  roundness?: string
+  zIndex?: number
 }
 
 /**
@@ -70,7 +71,8 @@ const props = withDefaults(defineProps<IProps>(), {
   overlayClickClose: true,
   canSwipe: true,
   hideDragHandle: false,
-  roundness: "16px",
+  roundness: '16px',
+  zIndex: 99999
 })
 
 /**
@@ -323,7 +325,6 @@ defineExpose({ open, close })
 
 <style lang="scss" scoped>
 .bottom-sheet {
-  z-index: 99999;
   display: flex;
   flex-direction: column;
   align-items: center;
