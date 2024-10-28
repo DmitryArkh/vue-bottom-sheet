@@ -1,6 +1,6 @@
 {
   "name": "@dmitryarkh/vue-bottom-sheet",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "description": "Bottom Sheet Component for Vue 3",
   "private": false,
   "scripts": {

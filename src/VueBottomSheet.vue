@@ -279,8 +279,7 @@ nextTick(() => {
  */
 const open = () => {
   translateValue.value = 0
-  document.documentElement.style.overflowY = 'hidden'
-  document.documentElement.style.overscrollBehavior = 'none'
+  document.documentElement.classList.add('bottom-sheet-open')
   showSheet.value = true
   emit('opened')
   window.addEventListener('keyup', handleKeyUp)
@@ -294,8 +293,7 @@ const close = async () => {
   showSheet.value = false
   translateValue.value = 100
   setTimeout(() => {
-    document.documentElement.style.overflowY = 'auto'
-    document.documentElement.style.overscrollBehavior = ''
+    document.documentElement.classList.remove('bottom-sheet-open')
     emit('closed')
   }, props.transitionDuration * 1000)
 }
@@ -440,5 +438,12 @@ defineExpose({ open, close })
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+</style>
+
+<style>
+.bottom-sheet-open {
+  overflow-y: hidden;
+  overscroll-behavior-y: none;
 }
 </style>
