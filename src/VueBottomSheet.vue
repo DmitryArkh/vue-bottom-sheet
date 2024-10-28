@@ -245,11 +245,6 @@ const dragHandler = (event: IEvent, type: 'area' | 'main') => {
 
 nextTick(() => {
   /**
-   * Set initial card height
-   */
-  initHeight()
-
-  /**
    * Create instances of Hammerjs
    */
   const hammerAreaInstance = new Hammer(bottomSheetDraggableArea.value, {
@@ -278,6 +273,7 @@ nextTick(() => {
  * Open bottom sheet method
  */
 const open = () => {
+  initHeight()
   translateValue.value = 0
   document.documentElement.classList.add('bottom-sheet-open')
   showSheet.value = true
